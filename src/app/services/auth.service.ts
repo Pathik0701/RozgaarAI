@@ -2,6 +2,7 @@ import { and, eq, gt, sql } from "drizzle-orm";
 import nodemailer from "nodemailer";
 import { db } from "../db";
 import { userPublicColumns, usersTable } from "../db/auth.schema";
+import { UserRole } from "../models/auth.model";
 import ApiError from "../utils/apiError";
 import { transporter } from "../utils/mail";
 import {
@@ -24,11 +25,13 @@ export const cookieOptions = {
 export const signupService = async ({
   firstName,
   lastName,
+  role,
   email,
   password,
 }: {
   firstName: string;
   lastName?: string | null | undefined;
+  role: UserRole;
   email: string;
   password: string;
 }) => {
@@ -39,7 +42,7 @@ export const signupService = async ({
 
   if (existingUser.length > 0) {
     throw ApiError.conflict(
-      "Signup failed. Please check your details or try logging in"
+      "Signup failed. Please check your details or try signing in"
     );
   }
 
@@ -51,6 +54,7 @@ export const signupService = async ({
       .values({
         firstName,
         lastName,
+        role,
         email,
         password: hashedPassword,
       })
