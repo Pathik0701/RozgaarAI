@@ -32,8 +32,6 @@ export const signupService = async ({
   email: string;
   password: string;
 }) => {
-  console.log("DATA: ", firstName, lastName, email, password);
-
   const existingUser = await db
     .select()
     .from(usersTable)
