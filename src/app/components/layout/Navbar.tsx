@@ -14,7 +14,7 @@ const links = [
   },
   {
     title: "Hire",
-    href: "/employer",
+    href: "/hire",
   },
   {
     title: "About",
@@ -57,6 +57,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <button
+             onClick={() => location.href="/login"}
             type="button"
             className="rounded-xl px-5 py-2 text-[#5B1E05] transition hover:bg-[#F5ECE4]"
           >
@@ -64,6 +65,7 @@ export default function Navbar() {
           </button>
 
           <button
+            onClick={()=> location.href="/signup"}
             type="button"
             className="rounded-xl bg-[#5B1E05] px-6 py-3 font-semibold text-white shadow-md transition hover:bg-[#442003]"
           >
