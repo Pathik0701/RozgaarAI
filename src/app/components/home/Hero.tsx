@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -32,7 +33,7 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         {/* HERO GRID */}
 
-        <div className="grid min-h-[760px] items-center gap-16 lg:grid-cols-2">
+        <div className="grid items-center gap-16 py-24 lg:grid-cols-2 lg:py-28">
           {/* LEFT */}
 
           <div>
@@ -58,11 +59,15 @@ export default function Hero() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-5">
-              <button className="rounded-2xl bg-[#5B1E05] px-8 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#431302] hover:shadow-2xl">
+              <button
+              onClick={() => location.href="/jobs"}
+              className="rounded-2xl bg-[#5B1E05] px-8 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#431302] hover:shadow-2xl">
                 Find Work →
               </button>
 
-              <button className="rounded-2xl border border-[#D8C7B8] bg-white px-8 py-4 font-semibold text-[#5B1E05] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <button
+              onClick={() => location.href="/hire"}
+              className="rounded-2xl border border-[#D8C7B8] bg-white px-8 py-4 font-semibold text-[#5B1E05] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 Hire Workers
               </button>
             </div>
@@ -149,7 +154,7 @@ export default function Hero() {
 
         {/* SEARCH BAR */}
 
-        <div className="relative z-30 -mt-12 rounded-[28px] border border-[#E8DDD3] bg-white/90 p-4 shadow-2xl backdrop-blur-md transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
+        <div className="relative z-30 -mt-12 rounded-[28px] border border-[#E8DDD3] bg-white/90 p-4 shadow-[0_12px_35px_rgba(91,30,5,0.08)] backdrop-blur-md transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)]">
           <div className="grid gap-4 lg:grid-cols-[1fr_1fr_1fr_auto]">
             <div className="flex items-center gap-3 p-4">
               <Search className="text-[#8F3E13]" />
@@ -198,59 +203,50 @@ export default function Hero() {
         </div>
         {/* FEATURES */}
 
-        <div className="mt-12 grid grid-cols-2 gap-6 lg:grid-cols-4">
-          <div className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-md">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F7E7DA]">
-              ✨
+        <div className="mt-16 grid grid-cols-2 gap-8 pb-24 lg:grid-cols-4">
+          {[
+            {
+              icon: "✨",
+              title: "AI Matching",
+              subtitle: "Smart recommendations",
+            },
+            {
+              icon: "🛡️",
+              title: "Verified Workers",
+              subtitle: "Trusted profiles",
+            },
+            {
+              icon: "💰",
+              title: "Fair Wages",
+              subtitle: "AI wage prediction",
+            },
+            {
+              icon: "🌎",
+              title: "Multilingual",
+              subtitle: "Regional languages",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="group rounded-3xl border border-[#F0E4DA] bg-white/80 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#E2C9B5] hover:shadow-lg"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FAF2EB] text-2xl transition group-hover:scale-110">
+                  {item.icon}
+                </div>
+
+                <div>
+                  <h3 className="font-bold text-[#2B0F05]">{item.title}</h3>
+
+                  <p className="mt-1 text-sm text-[#7A726C]">{item.subtitle}</p>
+                </div>
+              </div>
             </div>
-
-            <div>
-              <h3 className="font-semibold text-[#2B0F05]">AI Matching</h3>
-
-              <p className="text-sm text-gray-500">Smart recommendations</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-md">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F7E7DA]">
-              🛡️
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-[#2B0F05]">Verified Workers</h3>
-
-              <p className="text-sm text-gray-500">Trusted profiles</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-md">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F7E7DA]">
-              💰
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-[#2B0F05]">Fair Wages</h3>
-
-              <p className="text-sm text-gray-500">AI wage prediction</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 rounded-2xl bg-white p-5 shadow-md">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F7E7DA]">
-              🌎
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-[#2B0F05]">Multilingual</h3>
-
-              <p className="text-sm text-gray-500">Regional languages</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-      {/* Bottom Fade */}
 
-      <div className="pointer-events-none absolute right-0 bottom-0 left-0 h-40 bg-gradient-to-t from-[#F7EBDD] to-transparent"></div>
+      <div className="pointer-events-none absolute right-0 bottom-0 left-0 h-20 bg-gradient-to-t from-[#FCF8F4] to-transparent"></div>
     </section>
   );
 }
