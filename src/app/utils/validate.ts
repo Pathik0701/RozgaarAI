@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import type { z } from "zod";
 
 export const validateBody = <Schema extends z.ZodType>(schema: Schema) => {
   return async (
-    req: Request,
+    req: NextRequest,
     handler: (data: z.output<Schema>) => Promise<Response>
   ): Promise<Response> => {
     let body: unknown;
