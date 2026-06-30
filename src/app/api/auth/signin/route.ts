@@ -4,8 +4,9 @@ import ApiError, { handleApiError } from "@/app/utils/apiError";
 import ApiResponse from "@/app/utils/apiResponse";
 import { validateBody } from "@/app/utils/validate";
 import { cookies } from "next/headers";
+import { NextRequest } from "next/server";
 
-export const POST = async (req: Request) => {
+export const POST = async (req: NextRequest) => {
   return validateBody(signinModel)(req, async data => {
     try {
       const { user, accessToken } = await signinService(data);
