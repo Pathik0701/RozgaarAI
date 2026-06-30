@@ -57,7 +57,6 @@ export default function LoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#FCF8F4]">
       <div className="relative w-full max-w-md rounded-3xl bg-white p-10 shadow-xl">
-
         {/* Back Button */}
         <button
           type="button"
